@@ -2,9 +2,65 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'PoppinsRegular';
+  src: url('./fonts/Poppins-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'PoppinsBold';
+  src: url('./fonts/Poppins-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'PoppinsLight';
+  src: url('./fonts/Poppins-Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'PoppinsMedium';
+  src: url('./fonts/Poppins-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'PoppinsSemiBold';
+  src: url('./fonts/Poppins-SemiBold.ttf') format('truetype');
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #ec4899, #eab308);
+  border-radius: 20px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
+}
+
+:root {
+  --text-poppins: 'PoppinsRegular', sans-serif;
+  --text-poppins-bold: 'PoppinsBold', sans-serif;
+  --text-poppins-light: 'PoppinsLight', sans-serif;
+  --text-poppins-medium: 'PoppinsMedium', sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -15,7 +71,5 @@
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'PoppinsRegular', sans-serif;
 }
