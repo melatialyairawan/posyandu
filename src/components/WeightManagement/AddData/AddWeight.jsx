@@ -49,9 +49,9 @@ export const AddDataWeight = () => {
                 <Form className="space-y-4 shadow p-5">
                     <div className="flex flex-col md:flex-row items-start gap-5 md:gap-10">
                         <InputField
-                            name="Kegiatan"
+                            name="Nama Anak"
                             type="text"
-                            placeholder="Masukkan Kegiatan"
+                            placeholder="Masukkan nama anak"
                             customClassname="w-full"
                             required={true}
                         />
