@@ -1,8 +1,11 @@
-import React from 'react'
+import React from 'react';
+import UserManageTable from '@/components/TableComponent/UserManageTable';
 
 const UserManagement = () => {
     return (
-        <div>UserManagement</div>
+        <div>
+            <UserManageTable />
+        </div>
     )
 }
 
