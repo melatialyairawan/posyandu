@@ -6,20 +6,30 @@ import { useRouter } from 'next/navigation';
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { Button, Divider } from '@nextui-org/react';
 import { FaPlus } from 'react-icons/fa';
+import { toast } from 'react-hot-toast';
 import Calendar from '@/components/Agenda/AgendaComponent';
 
 const AgendaPage = () => {
     const router = useRouter();
 
-    const handleNavigation = (path) => {
-        router.push(path);
+    const handleNavigation = async () => {
+        const loadingToast = toast.loading('Loading...');
+        try {
+            await router.push('/admin/agenda/addData');
+            toast.success('Redirecting...');
+        } catch (error) {
+            toast.error('Navigation failed');
+        } finally {
+            toast.dismiss(loadingToast);
+        }
     }
+
     return (
         <div>
             <Button
                 startContent={<FaPlus />}
                 className='bg-primary text-white'
-                onPress={() => handleNavigation('/admin/agenda/addData')}
+                onPress={handleNavigation}
             >
                 Tambah Kegiatan
             </Button>
