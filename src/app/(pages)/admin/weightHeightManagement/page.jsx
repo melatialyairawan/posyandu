@@ -1,8 +1,12 @@
-import React from 'react'
+import React from 'react';
+import WeightHeightTable from '@/components/TableComponent/WeightHeightTable';
 
 const WeightManagement = () => {
     return (
-        <div>WeightManagement</div>
+        <div>
+            {/* <h2 className='font-semibold text-xl mb-5'>Kelola Berat & Tinggi Badan</h2> */}
+            <WeightHeightTable />
+        </div>
     )
 }
 
