@@ -70,6 +70,7 @@ export const EditDataWeight = () => {
                                     <label className="text-gray-700 font-medium">Gender</label>
                                     <RadioGroup
                                         className="flex gap-4 mt-2"
+                                        isRequired
                                     >
                                         <Radio value="male">Laki - Laki</Radio>
                                         <Radio value="female">Perempuan</Radio>
