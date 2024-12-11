@@ -1,10 +1,15 @@
 import React from 'react';
+import { Toaster } from 'react-hot-toast';
 import HeaderComponent from '@/components/Header/Header';
 import Sidebar from '@/components/Sidebar/Sidebar';
 
 const DashboardLayout = ({ children }) => {
     return (
         <>
+            <Toaster
+                position="top-center"
+                reverseOrder={false}
+            />
             <HeaderComponent />
             <aside className='hidden lg:block'>
                 <Sidebar />
