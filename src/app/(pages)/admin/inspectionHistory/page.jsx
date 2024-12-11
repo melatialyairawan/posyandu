@@ -1,8 +1,11 @@
-import React from 'react'
+import React from 'react';
+import InspectionHistoryTable from '@/components/TableComponent/InspectionHistoryTable';
 
 const InspectionHistory = () => {
     return (
-        <div>InspectionHistory</div>
+        <div>
+            <InspectionHistoryTable />
+        </div>
     )
 }
 
