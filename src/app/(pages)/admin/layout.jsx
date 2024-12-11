@@ -9,7 +9,9 @@ const DashboardLayout = ({ children }) => {
             <aside className='hidden lg:block'>
                 <Sidebar />
             </aside>
-            {children}
+            <div className='p-5 lg:ml-80 ml-0'>
+                {children}
+            </div>
         </>
     )
 }
