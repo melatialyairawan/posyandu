@@ -3,12 +3,13 @@
 import React from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { Button } from '@nextui-org/button';
-import { IoHomeOutline, IoFolderOpenOutline, IoPersonOutline, IoSettingsOutline } from 'react-icons/io5';
-import { RiGroupLine, RiScales2Line } from 'react-icons/ri';
+import { IoHomeOutline, IoPersonOutline, IoSettingsOutline } from 'react-icons/io5';
+import { RiScales2Line } from 'react-icons/ri';
 import { TbClockEdit } from "react-icons/tb";
 import { MdEditCalendar } from "react-icons/md";
 import { FaRegChartBar } from "react-icons/fa";
 import { LiaUserEditSolid } from "react-icons/lia";
+import toast from 'react-hot-toast';
 
 export default function Sidebar() {
     const pathname = usePathname();
@@ -27,8 +28,17 @@ export default function Sidebar() {
         { label: 'Global Settings', icon: <IoSettingsOutline />, path: '/settings/global' },
     ];
 
-    const handleNavigation = (path) => {
-        router.push(path);
+    const handleNavigation = async (path) => {
+        if (pathname === path) return;
+        const loadingToast = toast.loading('Navigating...');
+        try {
+            await router.push(path);
+            toast.success('Redirecting...');
+        } catch (error) {
+            toast.error('Navigation failed.');
+        } finally {
+            toast.dismiss(loadingToast);
+        }
     };
 
     return (
