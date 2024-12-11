@@ -19,12 +19,12 @@ export default function HeaderComponent() {
     ];
 
     return (
-        <Navbar onMenuOpenChange={setIsOpen} className='pt-2 bg-white cursor-pointer' maxWidth="full" isBlurred="false">
+        <Navbar onMenuOpenChange={setIsOpen} className='pt-2 bg-white cursor-pointer border-b-1 border-gray-300' maxWidth="full" isBlurred="false">
             <NavbarMenuToggle
                 aria-label={isOpen ? "Close menu" : "Open menu"}
                 className="sm:hidden"
             />
-            <NavbarBrand>
+            <NavbarBrand className='mb-1'>
                 <img src="/assets/images/logo.png" alt="sikita" width={200} />
             </NavbarBrand>
 
