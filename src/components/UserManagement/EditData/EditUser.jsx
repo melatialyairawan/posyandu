@@ -70,7 +70,7 @@ export const EditUserForm = () => {
                     </div>
                     <div className="flex flex-col items-start gap-2">
                         <label htmlFor="roles">Peran</label>
-                        <Select size='' label="Pilih" isRequired>
+                        <Select size='sm' label="Pilih" isRequired>
                             {roles.map((role) => (
                                 <SelectItem key={role.key}>{role.label}</SelectItem>
                             ))}
