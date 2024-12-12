@@ -109,7 +109,7 @@ export default function InspectionHistoryTable() {
                                     <Button isIconOnly onPress={handleToEdit} className="text-primary bg-white border-primary border mr-2">
                                         <LuPencilLine size={15} />
                                     </Button>
-                                    <Button isIconOnly onPress={handleToEdit} className="text-danger bg-white border-danger border mr-2">
+                                    <Button isIconOnly className="text-danger bg-white border-danger border mr-2">
                                         <LuTrash size={15} />
                                     </Button>
                                 </Skeleton>
