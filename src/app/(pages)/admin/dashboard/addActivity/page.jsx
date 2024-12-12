@@ -3,7 +3,8 @@ import Link from 'next/link';
 import { IoIosArrowDropleft } from 'react-icons/io';
 import { AddDataDashboard } from '@/components/Dashboard/AddData/AddDashboard';
 
-const editActivity = () => {
+
+const addActivity= () => {
     return (
         <div>
             <Link href="/admin/dashboard" className='flex items-center gap-2 mb-5 text-[#7E84A3]'>
@@ -16,4 +17,4 @@ const editActivity = () => {
     )
 }
 
-export default editActivity
+export default addActivity

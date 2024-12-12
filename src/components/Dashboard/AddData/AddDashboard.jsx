@@ -5,6 +5,7 @@ import * as Yup from 'yup';
 import { useRouter } from 'next/navigation';
 import { Formik, Field, Form } from 'formik';
 import { Button } from "@nextui-org/button";
+import { RadioGroup, Radio, Textarea } from "@nextui-org/react";
 import InputField from '@/components/InputFIeld/InputField';
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -15,13 +16,9 @@ const validationSchema = Yup.object({
     Kecamatan: Yup.string().required('Kecamatan is required').min(3, 'Kecamatan must be at least 3 characters'),
 });
 
-export const EditDataDashboard = () => {
+export const AddDataDashboard = () => {
     const initialValues = {
-        Nama_posyandu: '',
-        Tanggal: '',
-        Jumlah_pengunjung: '',
-        Alamat: '',
-        Kecamatan: '',
+       
     };
 
     const router = useRouter();
@@ -81,7 +78,7 @@ export const EditDataDashboard = () => {
                     
 
                     <Button type="submit" className="w-fit mb-1 bg-primary text-white" isLoading={isSubmitting}>
-                        Edit
+                        Tambah
                     </Button>
                 </Form>
             )}

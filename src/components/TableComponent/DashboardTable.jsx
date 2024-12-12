@@ -43,7 +43,7 @@ export default function InspectionHistoryTable() {
     const handleToAdd = async () => {
         const loadingToast = toast.loading('Loading...');
         try {
-            await router.push('/admin/dashboard/addActivity');
+            router.push('/admin/dashboard/addActivity');
             toast.success('Redirecting...');
         } catch (error) {
             toast.error('Navigation failed');
