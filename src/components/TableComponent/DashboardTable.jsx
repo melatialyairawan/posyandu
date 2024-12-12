@@ -24,7 +24,7 @@ import {
     ModalFooter,
     useDisclosure,
 } from '@nextui-org/react';
-import { LuPencilLine, LuTrash } from "react-icons/lu";
+import { LuPencilLine, LuPlus, LuTrash } from "react-icons/lu";
 import toast from 'react-hot-toast';
 
 export default function InspectionHistoryTable() {
@@ -108,6 +108,9 @@ export default function InspectionHistoryTable() {
                                 <Skeleton isLoaded={isLoaded}>
                                     <Button isIconOnly onPress={handleToEdit} className="text-primary bg-white border-primary border mr-2">
                                         <LuPencilLine size={15} />
+                                    </Button>
+                                    <Button isIconOnly onPress={handleToEdit} className="text-primary bg-white border-primary border mr-2">
+                                        <LuPlus size={15} />
                                     </Button>
                                     <Button
                                         isIconOnly
