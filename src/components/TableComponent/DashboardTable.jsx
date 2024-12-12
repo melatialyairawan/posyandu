@@ -40,11 +40,22 @@ export default function InspectionHistoryTable() {
         return () => clearTimeout(timer);
     }, []);
 
+    const handleToAdd = async () => {
+        const loadingToast = toast.loading('Loading...');
+        try {
+            await router.push('/admin/dashboard/addActivity');
+            toast.success('Redirecting...');
+        } catch (error) {
+            toast.error('Navigation failed');
+        } finally {
+            toast.dismiss(loadingToast);
+        }
+    }
 
     const handleToEdit = () => {
         const loadingToast = toast.loading('Loading...');
         try {
-            router.push('/admin/dashboard/addActivity');
+            router.push('/admin/dashboard/editActivity');
             toast.success('Redirecting...');
         } catch (error) {
             toast.error('Navigation failed');
@@ -60,8 +71,8 @@ export default function InspectionHistoryTable() {
 
     return (
         <div className="">
-            <div className="flex justify-between items-center mb-5">
-
+            <div className="flex justify-end items-center mb-5">
+            <Button color="success" auto className="bg-primary text-white" onPress={handleToAdd}>+ Tambahkan</Button>
             </div>
 
             <Table
@@ -109,9 +120,7 @@ export default function InspectionHistoryTable() {
                                     <Button isIconOnly onPress={handleToEdit} className="text-primary bg-white border-primary border mr-2">
                                         <LuPencilLine size={15} />
                                     </Button>
-                                    <Button isIconOnly onPress={handleToEdit} className="text-primary bg-white border-primary border mr-2">
-                                        <LuPlus size={15} />
-                                    </Button>
+                                
                                     <Button
                                         isIconOnly
                                         onPress={() => {
