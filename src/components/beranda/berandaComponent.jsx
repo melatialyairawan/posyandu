@@ -131,6 +131,26 @@ const BerandaComponent = () => {
           </div>
         </div>
       </section>  
+
+      <section className="mt-32 px-10">
+        <div className="flex flex-col md:flex-row justify-center items-center mt-10">
+          <div className="max-w-xl text-left md:mr-8">
+            <h3 className="text-3xl font-bold  mb-6">Informasi Gizi dan MPASI Untuk Anak</h3>
+            <p className="mb-6 font-bold">Apa itu MPASI?</p>
+            <p className="mb-6">MPASI (Makanan Pendamping ASI) adalah makanan yang diberikan mulai usia 6 bulan untuk memenuhi kebutuhan gizi bayi selain ASI.</p>
+            <p className="mb-6 font-bold">Panduan MPASI Berdasarkan Usia:</p>
+            <ul className="list-disc mb-6 pl-5">
+              <li className="mb-2 font-bold">6–8 bulan: <p className='font-normal'>Bubur halus (pure) 2-3 kali sehari. Contoh: pure wortel, kentang, buah.</p></li>
+              <li className="mb-2 font-bold">9–11 bulan: <p className='font-normal'>Makanan cincang 3 kali sehari + 1-2 camilan sehat. Contoh: nasi tim, sayur cincang.</p></li>
+              <li className="mb-2 font-bold">12 bulan ke atas: <p className='font-normal'>Makanan keluarga 3 kali sehari + 2 camilan sehat.</p></li>
+            </ul>
+            <button className="px-6 py-3 bg-teal-500 text-white rounded-full hover:bg-teal-600 transition">Selengkapnya</button>
+          </div>
+          <div className="max-w-xl text-center mb-8 md:mb-0">
+            <Image src="/assets/images/meal.png" alt="Informasi Gizi" width={400} height={250} />
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
