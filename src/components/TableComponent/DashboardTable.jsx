@@ -24,7 +24,7 @@ import {
     ModalFooter,
     useDisclosure,
 } from '@nextui-org/react';
-import { LuPencilLine, LuTrash } from "react-icons/lu";
+import { LuPencilLine, LuPlus, LuTrash } from "react-icons/lu";
 import toast from 'react-hot-toast';
 
 export default function InspectionHistoryTable() {
@@ -40,11 +40,22 @@ export default function InspectionHistoryTable() {
         return () => clearTimeout(timer);
     }, []);
 
-   
-    const handleToEdit = () => {
+    const handleToAdd = async () => {
         const loadingToast = toast.loading('Loading...');
         try {
             router.push('/admin/dashboard/addActivity');
+            toast.success('Redirecting...');
+        } catch (error) {
+            toast.error('Navigation failed');
+        } finally {
+            toast.dismiss(loadingToast);
+        }
+    }
+
+    const handleToEdit = () => {
+        const loadingToast = toast.loading('Loading...');
+        try {
+            router.push('/admin/dashboard/editActivity');
             toast.success('Redirecting...');
         } catch (error) {
             toast.error('Navigation failed');
@@ -60,8 +71,8 @@ export default function InspectionHistoryTable() {
 
     return (
         <div className="">
-            <div className="flex justify-between items-center mb-5">
-               
+            <div className="flex justify-end items-center mb-5">
+            <Button color="success" auto className="bg-primary text-white" onPress={handleToAdd}>+ Tambahkan</Button>
             </div>
 
             <Table
@@ -109,9 +120,43 @@ export default function InspectionHistoryTable() {
                                     <Button isIconOnly onPress={handleToEdit} className="text-primary bg-white border-primary border mr-2">
                                         <LuPencilLine size={15} />
                                     </Button>
-                                    <Button isIconOnly className="text-danger bg-white border-danger border mr-2">
+                                
+                                    <Button
+                                        isIconOnly
+                                        onPress={() => {
+                                            onOpen();
+                                        }}
+                                        className="text-red-500 bg-white border-red-500 border"
+                                    >
                                         <LuTrash size={15} />
                                     </Button>
+                                    <Modal
+                                        backdrop="blur"
+                                        isOpen={isOpen}
+                                        onOpenChange={onOpenChange}
+                                    >
+                                        <ModalContent>
+                                            {(onClose) => (
+                                                <>
+                                                    <ModalHeader className="flex flex-col gap-1">Confirm</ModalHeader>
+                                                    <ModalBody>
+                                                        <p>Are you sure you want to delete this task?</p>
+                                                    </ModalBody>
+                                                    <ModalFooter>
+                                                        <Button color="primary" variant="light" onPress={onClose}>
+                                                            Cancel
+                                                        </Button>
+                                                        <Button color="danger" onPress={() => {
+                                                            handleDelete();
+                                                            onClose();
+                                                        }}>
+                                                            Delete
+                                                        </Button>
+                                                    </ModalFooter>
+                                                </>
+                                            )}
+                                        </ModalContent>
+                                    </Modal>
                                 </Skeleton>
                             </TableCell>
                         </TableRow>
