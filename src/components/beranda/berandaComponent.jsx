@@ -9,6 +9,7 @@ import { FaWeightScale } from "react-icons/fa6";
 import { RiMedicineBottleFill } from "react-icons/ri";
 import { GiStickingPlaster } from "react-icons/gi";
 import { FaCalendarAlt } from "react-icons/fa";
+import { TiTick } from "react-icons/ti";
 const navItems = [
   { label: 'Beranda', path: '/user/beranda' },
   { label: 'Agenda', path: '/agenda' },
@@ -53,8 +54,9 @@ const BerandaComponent = () => {
           <h1 className="text-4xl font-bold mb-4">Kenali Gejala dan</h1>
           <h1 className="text-4xl font-bold mb-4 text-teal-500">Penyebab Gondongan</h1>
           <p className="mb-6">Waktunya peduli kesehatan keluarga! Yuk jadwalkan kunjungan ke Posyandu terdekat</p>
-          <button className=" px-6 py-3 bg-teal-500 text-white rounded-full hover:bg-teal-600 transition flex items-center space-x-2"> 
-            <FaCalendarAlt /> <span>Buat Jadwal</span> </button>
+          <button className="px-6 py-3 bg-teal-500 text-white rounded-full hover:bg-teal-600 transition flex items-center space-x-2">
+            <FaCalendarAlt /> <span>Buat Jadwal</span>
+          </button>
         </div>
         <div className="mt-6 md:mt-0">
           <Image src="/assets/images/iconmom.png" alt="Ilustrasi Posyandu" width={300} height={200} />
@@ -109,9 +111,28 @@ const BerandaComponent = () => {
             <p className="text-white mt-2 text-center">Data Balita</p> 
           </div> 
         </div> 
-      </section>    
+      </section>  
+
+      <section className="mt-32 px-10">
+        <h3 className="text-3xl font-bold text-center mb-6">Buat Jadwal Kunjungan Posyandu Anda Sekarang</h3>
+        <div className="flex flex-col md:flex-row justify-center items-center mt-10">
+          <div className="max-w-xl text-center mb-8 md:mb-0 md:mr-8">
+            <Image src="/assets/images/schedule.png" alt="Jadwal Posyandu" width={400} height={250} />
+          </div>
+          <div className="max-w-xl text-left">
+            <p className="mb-6">Posyandu adalah langkah penting untuk memantau tumbuh kembang anak dan kesehatan keluarga Anda. Dengan sistem pendaftaran yang mudah dan cepat, kami membantu Anda merencanakan kunjungan posyandu tanpa repot.</p>
+            <ul className="list-disc mb-6">
+               <li className="flex items-center"><TiTick className='text-teal-500'/>Pendaftaran secara online</li> 
+               <li className="flex items-center"><TiTick className='text-teal-500'/>Pendaftaran mudah</li>            
+            </ul>
+            <button className="px-6 py-3 bg-teal-500 text-white rounded-full hover:bg-teal-600 transition flex items-center space-x-2">
+              <FaCalendarAlt /> <span>Buat Jadwal</span>
+            </button>
+          </div>
+        </div>
+      </section>  
     </div>
   );
 };
 
-export default BerandaComponent
+export default BerandaComponent;
