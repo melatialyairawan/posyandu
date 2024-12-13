@@ -8,9 +8,7 @@ import { BiInjection } from "react-icons/bi";
 import { FaWeightScale } from "react-icons/fa6";
 import { RiMedicineBottleFill } from "react-icons/ri";
 import { GiStickingPlaster } from "react-icons/gi";
-import { FaBaby } from "react-icons/fa"; 
-import { FaChild } from "react-icons/fa";
-
+import { FaCalendarAlt } from "react-icons/fa";
 const navItems = [
   { label: 'Beranda', path: '/user/beranda' },
   { label: 'Agenda', path: '/agenda' },
@@ -50,19 +48,20 @@ const BerandaComponent = () => {
         </nav>
       </header>
 
-      <main className="flex flex-col md:flex-row justify-between items-center min-h-screen px-28">        
+      <main className="flex flex-col md:flex-row justify-between items-center pt-20 px-28">        
         <div className="max-w-xl text-left md:w-1/2">
           <h1 className="text-4xl font-bold mb-4">Kenali Gejala dan</h1>
           <h1 className="text-4xl font-bold mb-4 text-teal-500">Penyebab Gondongan</h1>
           <p className="mb-6">Waktunya peduli kesehatan keluarga! Yuk jadwalkan kunjungan ke Posyandu terdekat</p>
-          <button className="px-6 py-3 bg-teal-500 text-white rounded-full hover:bg-teal-600 transition">Buat Jadwal</button>
+          <button className=" px-6 py-3 bg-teal-500 text-white rounded-full hover:bg-teal-600 transition flex items-center space-x-2"> 
+            <FaCalendarAlt /> <span>Buat Jadwal</span> </button>
         </div>
         <div className="mt-6 md:mt-0">
           <Image src="/assets/images/iconmom.png" alt="Ilustrasi Posyandu" width={300} height={200} />
         </div>
       </main>
 
-      <section className="pt-4 px-10">
+      <section className="pt-28 px-10">
         <h4 className="text-3xl font-bold text-center mb-6">Layanan Kami</h4>
         <h4 className="text-center mb-10 text-xl">Kami menyediakan berbagai layanan kesehatan untuk mendukung tumbuh kembang anak</h4>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -93,7 +92,7 @@ const BerandaComponent = () => {
         </div>
       </section>
 
-      <section className="mt-16 px-10 bg-gradient-to-r from-[#18B3AB] to-[#34BDF8] py-10 rounded-lg">
+      <section className="mt-32 px-10 bg-gradient-to-r from-[#18B3AB] to-[#34BDF8] py-10 rounded-lg">
         <h3 className="text-xl text-white font-bold text-center mb-6">Statistik 2024</h3> 
         <h3 className="text-3xl text-white font-bold text-center mb-6">Data Bayi dan Balita</h3> 
         <div className="flex justify-center mt-10 space-x-20"> 
