@@ -10,6 +10,11 @@ import { RiMedicineBottleFill } from "react-icons/ri";
 import { GiStickingPlaster } from "react-icons/gi";
 import { FaCalendarAlt } from "react-icons/fa";
 import { TiTick } from "react-icons/ti";
+import { FaLocationDot } from "react-icons/fa6";
+import { IoIosMail } from "react-icons/io";
+import { FaPhoneAlt } from "react-icons/fa";
+
+
 const navItems = [
   { label: 'Beranda', path: '/user/beranda' },
   { label: 'Agenda', path: '/agenda' },
@@ -64,7 +69,7 @@ const BerandaComponent = () => {
       </main>
 
       <section className="pt-28 px-10">
-        <h4 className="text-3xl font-bold text-center mb-6">Layanan Kami</h4>
+        <h4 className="text-2xl font-bold text-center mb-6">Layanan Kami</h4>
         <h4 className="text-center mb-10 text-xl">Kami menyediakan berbagai layanan kesehatan untuk mendukung tumbuh kembang anak</h4>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-lg relative">
@@ -131,14 +136,14 @@ const BerandaComponent = () => {
           </div>
         </div>
       </section>  
-
+            
       <section className="mt-32 px-10">
         <div className="flex flex-col md:flex-row justify-center items-center mt-10">
           <div className="max-w-xl text-left md:mr-8">
-            <h3 className="text-3xl font-bold  mb-6">Informasi Gizi dan MPASI Untuk Anak</h3>
+            <h3 className="text-3xl font-bold text-teal-500 mb-6">Informasi Gizi dan MPASI Untuk Anak</h3>
             <p className="mb-6 font-bold">Apa itu MPASI?</p>
             <p className="mb-6">MPASI (Makanan Pendamping ASI) adalah makanan yang diberikan mulai usia 6 bulan untuk memenuhi kebutuhan gizi bayi selain ASI.</p>
-            <p className="mb-6 font-bold">Panduan MPASI Berdasarkan Usia:</p>
+            <p className="mb-6 font-bold text-teal-500">Panduan MPASI Berdasarkan Usia:</p>
             <ul className="list-disc mb-6 pl-5">
               <li className="mb-2 font-bold">6–8 bulan: <p className='font-normal'>Bubur halus (pure) 2-3 kali sehari. Contoh: pure wortel, kentang, buah.</p></li>
               <li className="mb-2 font-bold">9–11 bulan: <p className='font-normal'>Makanan cincang 3 kali sehari + 1-2 camilan sehat. Contoh: nasi tim, sayur cincang.</p></li>
@@ -151,6 +156,34 @@ const BerandaComponent = () => {
           </div>
         </div>
       </section>
+      
+      <footer style={{ backgroundColor: 'rgba(24, 179, 171, 0.26)', padding: '30px', textAlign: 'center', marginTop:'60px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+          <div>
+            <h3 className='text-left'>Kontak Kami</h3>
+            <p className='text-left flex items-center mt-2'>
+              <IoIosMail className="text-teal-500 mr-2" style={{ fontSize: '20px'}} />
+              <a href="mailto:marketing@humanika.co.id">marketing@humanika.co.id</a></p>
+            <p className='text-left flex items-center'>
+              <FaPhoneAlt className="text-teal-500 mr-2"/>
+              <a href="tel:+629">(029)-</a></p>
+          </div>
+          <div>
+            <h3 className='text-left'>Jam Kerja</h3>
+            <p className='text-left mt-2'>Senin - Jumat : 08:00 - 17:00</p>
+            <p className='text-left'>Sabtu - Minggu : LIBUR</p>
+          </div>
+          <div>
+            <h3 className='text-left'>Lokasi</h3>
+            <div className='text-left flex items-center mt-2'> <FaLocationDot className="text-teal-500 mr-2" style={{ fontSize: '30px'}} /> 
+              <div> 
+                <p>Jl. Sentot Prawirodirjo Rt. 11 Rw. 03</p> 
+                <p>Getas Pejaten, Jati - Kudus 59344</p> 
+              </div> 
+            </div>          
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
