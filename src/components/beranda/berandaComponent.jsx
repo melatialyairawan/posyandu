@@ -2,58 +2,16 @@
 
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';  
 import { BiInjection } from "react-icons/bi";
 import { FaWeightScale } from "react-icons/fa6";
 import { RiMedicineBottleFill } from "react-icons/ri";
 import { GiStickingPlaster } from "react-icons/gi";
 import { FaCalendarAlt } from "react-icons/fa";
 import { TiTick } from "react-icons/ti";
-import { FaLocationDot } from "react-icons/fa6";
-import { IoIosMail } from "react-icons/io";
-import { FaPhoneAlt } from "react-icons/fa";
-
-
-const navItems = [
-  { label: 'Beranda', path: '/user/beranda' },
-  { label: 'Agenda', path: '/agenda' },
-  { label: 'Timbangan', path: '/timbangan' },
-  { label: 'Daftar Posyandu', path: '/posyandu' },
-];
 
 const BerandaComponent = () => {
-  const pathname = usePathname();  
   return (
     <div>
-      <header className="flex justify-between items-center p-5 bg-gray-100">
-        <div className="flex items-center">
-          <Image src="/assets/images/logo.png" alt="sikita" width={200} height={50} />
-        </div>
-        <nav>
-          <ul className="flex space-x-3 items-center">
-            {navItems.map((item, index) => (
-              <li key={index} className="flex items-center space-x-2">
-                <Link href={item.path}>
-                  <span
-                    className={`flex items-center space-x-1 no-underline px-4 py-2 rounded-full transition ${
-                      pathname === item.path ? 'text-white bg-teal-500' : 'hover:text-white hover:bg-teal-500'
-                    }`}
-                  >
-                    {item.label}
-                  </span>
-                </Link>
-              </li>
-            ))}
-            <li>
-              <button className="px-6 py-2 text-teal-600 rounded-full hover:bg-white">
-                Login
-              </button>
-            </li>
-          </ul>
-        </nav>
-      </header>
-
       <main className="flex flex-col md:flex-row justify-between items-center pt-20 px-28">        
         <div className="max-w-xl text-left md:w-1/2">
           <h1 className="text-4xl font-bold mb-4">Kenali Gejala dan</h1>
@@ -156,34 +114,6 @@ const BerandaComponent = () => {
           </div>
         </div>
       </section>
-      
-      <footer style={{ backgroundColor: 'rgba(24, 179, 171, 0.26)', padding: '30px', textAlign: 'center', marginTop:'60px' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-          <div>
-            <h3 className='text-left'>Kontak Kami</h3>
-            <p className='text-left flex items-center mt-2'>
-              <IoIosMail className="text-teal-500 mr-2" style={{ fontSize: '20px'}} />
-              <a href="mailto:marketing@humanika.co.id">marketing@humanika.co.id</a></p>
-            <p className='text-left flex items-center'>
-              <FaPhoneAlt className="text-teal-500 mr-2"/>
-              <a href="tel:+629">(029)-</a></p>
-          </div>
-          <div>
-            <h3 className='text-left'>Jam Kerja</h3>
-            <p className='text-left mt-2'>Senin - Jumat : 08:00 - 17:00</p>
-            <p className='text-left'>Sabtu - Minggu : LIBUR</p>
-          </div>
-          <div>
-            <h3 className='text-left'>Lokasi</h3>
-            <div className='text-left flex items-center mt-2'> <FaLocationDot className="text-teal-500 mr-2" style={{ fontSize: '30px'}} /> 
-              <div> 
-                <p>Jl. Sentot Prawirodirjo Rt. 11 Rw. 03</p> 
-                <p>Getas Pejaten, Jati - Kudus 59344</p> 
-              </div> 
-            </div>          
-          </div>
-        </div>
-      </footer>
     </div>
   );
 };
