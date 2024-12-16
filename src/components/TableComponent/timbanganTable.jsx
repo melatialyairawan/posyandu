@@ -47,7 +47,7 @@ export default function TimbanganTable() {
                 className="w-full border border-gray-200 rounded-2xl shadow-md"
             >
                 <TableHeader>
-                    <TableColumn> </TableColumn>
+                    <TableColumn>No</TableColumn>
                     <TableColumn>Nama Anak</TableColumn>
                     <TableColumn>Tanggal Lahir</TableColumn>
                     <TableColumn>Terakhir Berat Badan</TableColumn>
@@ -59,14 +59,14 @@ export default function TimbanganTable() {
                         <TableRow key={index} className="hover:bg-gray-100">
                             <TableCell>
                                 <Skeleton isLoaded={isLoaded}>
-                                    <Checkbox />
+                                    {index + 1}
                                 </Skeleton>
                             </TableCell>
                             <TableCell>
                                 <Skeleton isLoaded={isLoaded}>
                                     {item.childName}
                                      <div className='mt-2'>
-                                        <span className="text-teal-500 cursor-pointer" onClick={() => handleToChart('/path/to/History')}>cek riwayat</span>
+                                        <span className="text-teal-500 cursor-pointer" onClick={() => handleToChart('/user/riwayatpemeriksaan')}>cek riwayat</span>
                                     </div>
 
                                 </Skeleton>
@@ -88,7 +88,7 @@ export default function TimbanganTable() {
                                 <Skeleton isLoaded={isLoaded}>
                                     {item.tinggiBadan}
                                     <div className='mt-2'>
-                                        <span className="text-teal-500 cursor-pointer" onClick={() => handleToChart('/path/to/HeightChart')}>cek grafik</span>
+                                        <span className="text-teal-500 cursor-pointer" onClick={() => handleToChart('/user/chart/height')}>cek grafik</span>
                                     </div>
                                 </Skeleton>
                             </TableCell>

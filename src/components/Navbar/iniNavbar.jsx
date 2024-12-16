@@ -10,7 +10,7 @@ const navItems = [
   { label: 'Beranda', path: '/user/beranda' },
   { label: 'Agenda', path: '/agenda' },
   { label: 'Timbangan', path: '/user/timbangan' },
-  { label: 'Daftar Posyandu', path: '/posyandu' },
+  { label: 'Daftar Posyandu', path: '/user/posyandulist' },
 ];
 
 const Navbar = () => {

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React from "react";
 import { Chart, CategoryScale, LinearScale, LineElement, PointElement, LineController, Title, Tooltip, Legend, Filler } from "chart.js";
 import { Line } from "react-chartjs-2";
 
@@ -12,7 +12,7 @@ const options = {
   maintainAspectRatio: false,
   plugins: {
     legend: {
-      display: false,  
+      display: false,  // Menyembunyikan legend
     },
     title: {
       display: true,
@@ -38,13 +38,13 @@ const options = {
     },
     y: {
       beginAtZero: true,
-      max: 12,
+      max: 100,  // Menyesuaikan dengan data tinggi badan
       ticks: {
         color: "rgba(0,0,0,.7)",
       },
       title: {
         display: true,
-        text: "Berat Badan",
+        text: "Tinggi Badan (cm)",
         color: "black",
       },
       grid: {
@@ -66,21 +66,21 @@ const data = {
     {
       backgroundColor: "rgba(49, 130, 206, 0.2)",
       borderColor: "#18B3AB",
-      data: [6, 7, 7, 0, 8, 9, 0, 9, 9, 8, 9, 0, 8, 9, 10, 10, 11],
+      data: [85, 86, 86, 87, 87, 0, 88, 0, 89, 90, 0, 91, 91, 92, 0, 93, 93],  // Data tinggi badan yang lebih masuk akal
       fill: true,  // Memungkinkan area bawah garis diisi dengan warna
       tension: 0.4,  // Membuat garis lebih halus
     },
   ],
 };
 
-export default function WeightChart() {
+export default function HeightChart() {
   return (
     <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white">
       <div className="rounded-t mb-0 px-4 py-3 bg-transparent">
         <div className="flex flex-wrap items-center">
           <div className="relative w-full max-w-full flex-grow flex-1">
             <h2 className="text-gray-800 text-xl font-semibold">
-              Grafik Berat Badan
+              Grafik Tinggi Badan
             </h2>
           </div>
         </div>
