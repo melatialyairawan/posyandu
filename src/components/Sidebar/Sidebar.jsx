@@ -3,7 +3,7 @@
 import React from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { Button } from '@nextui-org/button';
-import { IoHomeOutline, IoPersonOutline, IoSettingsOutline } from 'react-icons/io5';
+import { IoChatboxOutline, IoChatbubbleOutline, IoHomeOutline, IoPersonOutline, IoSettingsOutline } from 'react-icons/io5';
 import { RiScales2Line } from 'react-icons/ri';
 import { TbClockEdit } from "react-icons/tb";
 import { MdEditCalendar } from "react-icons/md";
@@ -26,6 +26,7 @@ export default function Sidebar() {
     const buttons2 = [
         { label: 'Personal Settings', icon: <IoPersonOutline />, path: '/settings/personal' },
         { label: 'Global Settings', icon: <IoSettingsOutline />, path: '/settings/global' },
+        { label: 'Helpdesk', icon: <IoChatbubbleOutline />, path: '/admin/Helpdesk' },
     ];
 
     const handleNavigation = async (path) => {
