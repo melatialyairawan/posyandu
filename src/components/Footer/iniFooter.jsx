@@ -15,7 +15,7 @@ const Footer = () => {
             <a href="mailto:marketing@humanika.co.id" className="text-gray-700">marketing@humanika.co.id</a>
           </p>
           <p className="flex items-center mt-2">
-            <FaPhoneAlt className="text-teal-500 mr-2 text-xl" />
+            <FaPhoneAlt className="text-teal-500 mr-2 " />
             <a href="tel:+629" className="text-gray-700">(029)-</a>
           </p>
         </div>

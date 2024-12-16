@@ -2,11 +2,14 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { Avatar } from "@nextui-org/react";
+import { IoIosArrowDown } from "react-icons/io";
+import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@nextui-org/react";
 
 const navItems = [
   { label: 'Beranda', path: '/user/beranda' },
   { label: 'Agenda', path: '/agenda' },
-  { label: 'Timbangan', path: '/timbangan' },
+  { label: 'Timbangan', path: '/user/timbangan' },
   { label: 'Daftar Posyandu', path: '/posyandu' },
 ];
 
@@ -33,7 +36,30 @@ const Navbar = () => {
             </li>
           ))}
           <li>
-            <button className="px-6 py-2 text-teal-600 rounded-full hover:bg-white">Login</button>
+            <Dropdown placement="bottom-end">
+              <DropdownTrigger>
+                <div className='flex items-center justify-center md:gap-2'>
+                  <Avatar
+                    isBordered
+                    as="button"
+                    className="transition-transform hidden md:block"
+                    color='primary'
+                    name="Jason Hughes"
+                    size="sm"
+                    src="https://i.pravatar.cc/150?u=a04258114e29026702d"
+                  />
+                  <p className='text-[#64748B] text-sm md:text-base'>Putri Una</p>
+                  <IoIosArrowDown className='text-[#64748B]' />
+                </div>
+              </DropdownTrigger>
+              <DropdownMenu aria-label="Profile Actions" variant="flat">
+                <DropdownItem key="settings">Informasi Pengguna</DropdownItem>
+                <DropdownItem key="help_and_feedback">Help & Feedback</DropdownItem>
+                <DropdownItem key="logout" color="danger">
+                  Log Out
+                </DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
           </li>
         </ul>
       </nav>
