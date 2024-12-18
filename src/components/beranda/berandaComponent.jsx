@@ -8,8 +8,12 @@ import { RiMedicineBottleFill } from "react-icons/ri";
 import { GiStickingPlaster } from "react-icons/gi";
 import { FaCalendarAlt } from "react-icons/fa";
 import { TiTick } from "react-icons/ti";
+import { useRouter } from 'next/navigation';
 
 const BerandaComponent = () => {
+  const router = useRouter(); 
+
+  const handleButtonClick = () => { router.push('/user/daftarantrean'); };
   return (
     <div>
       <main className="flex flex-col md:flex-row justify-between items-center pt-20 px-28">        
@@ -17,9 +21,9 @@ const BerandaComponent = () => {
           <h1 className="text-4xl font-bold mb-4">Kenali Gejala dan</h1>
           <h1 className="text-4xl font-bold mb-4 text-teal-500">Penyebab Gondongan</h1>
           <p className="mb-6">Waktunya peduli kesehatan keluarga! Yuk jadwalkan kunjungan ke Posyandu terdekat</p>
-          <button className="px-6 py-3 bg-teal-500 text-white rounded-full hover:bg-teal-600 transition flex items-center space-x-2">
-            <FaCalendarAlt /> <span>Buat Jadwal</span>
-          </button>
+          <button onClick={handleButtonClick} className="px-6 py-3 bg-teal-500 text-white rounded-full hover:bg-teal-600 transition flex items-center space-x-2" > 
+            <FaCalendarAlt /> <span>Buat Jadwal</span> 
+          </button>       
         </div>
         <div className="mt-6 md:mt-0">
           <Image src="/assets/images/iconmom.png" alt="Ilustrasi Posyandu" width={300} height={200} />
@@ -88,9 +92,9 @@ const BerandaComponent = () => {
                <li className="flex items-center"><TiTick className='text-teal-500'/>Pendaftaran secara online</li> 
                <li className="flex items-center"><TiTick className='text-teal-500'/>Pendaftaran mudah</li>            
             </ul>
-            <button className="px-6 py-3 bg-teal-500 text-white rounded-full hover:bg-teal-600 transition flex items-center space-x-2">
-              <FaCalendarAlt /> <span>Buat Jadwal</span>
-            </button>
+            <button onClick={handleButtonClick} className="px-6 py-3 bg-teal-500 text-white rounded-full hover:bg-teal-600 transition flex items-center space-x-2" > 
+              <FaCalendarAlt /> <span>Buat Jadwal</span> 
+            </button>       
           </div>
         </div>
       </section>  

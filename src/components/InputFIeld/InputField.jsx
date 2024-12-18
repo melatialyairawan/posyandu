@@ -5,7 +5,7 @@ import { Input } from "@nextui-org/input";
 import { IoEyeOutline, IoEyeOffOutline } from "react-icons/io5";
 import { GoPerson } from "react-icons/go";
 
-const InputField = ({ name, type, placeholder, customClassname, required }) => {
+const InputField = ({ name, type, placeholder, customClassname, required, options}) => {
     const [showPassword, setShowPassword] = useState(false);
 
     return (
@@ -13,15 +13,16 @@ const InputField = ({ name, type, placeholder, customClassname, required }) => {
             {({ field, meta }) => (
                 <div className={`relative ${customClassname}`}>
                     <label htmlFor={name} className='capitalize'>{name}</label>
-                    <Input
-                        id={name}
-                        type={type === 'password' ? (showPassword ? 'text' : 'password') : type}
-                        placeholder={placeholder}
-                        {...field}
-                        aria-invalid={meta.touched && !!meta.error}
-                        className={`w-full mt-2`}
-                        isRequired={required}
-                    />
+                        <Input
+                            id={name}
+                            type={type === 'password' ? (showPassword ? 'text' : 'password') : type}
+                            placeholder={placeholder}
+                            {...field}
+                            aria-invalid={meta.touched && !!meta.error}
+                            className={`w-full mt-2`}
+                            isRequired={required}
+                        />
+                    
                     {type === 'password' && (
                         <button
                             type="button"
