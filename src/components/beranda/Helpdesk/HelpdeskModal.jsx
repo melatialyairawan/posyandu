@@ -16,7 +16,7 @@ const HelpdeskModal = () => {
             </div>
 
             {/* Chat Modal */}
-            <Modal isOpen={isOpen} onClose={toggleModal} size="md" className="p-4 absolute bottom-14 right-14">
+            <Modal isOpen={isOpen} onClose={toggleModal} size="md" placement="center" className="p-4">
                 <ModalContent>
                     <ModalHeader className="bg-teal-500 text-white font-bold">
                         Helpdesk SiKITA
@@ -38,9 +38,9 @@ const HelpdeskModal = () => {
                                 <input
                                     type="text"
                                     placeholder="Tulis pesan Anda..."
-                                    className="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
+                                    className="w-full p-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
                                 />
-                                <button className="p-3 bg-teal-500 text-white rounded-full hover:bg-teal-600 transition">
+                                <button className="px-2 py-1 bg-teal-500 text-white rounded-full hover:bg-teal-600 transition">
                                     ➤
                                 </button>
                             </div>
