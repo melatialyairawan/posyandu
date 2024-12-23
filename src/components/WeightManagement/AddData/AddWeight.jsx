@@ -99,9 +99,9 @@ export const AddDataWeight = () => {
                             required={true}
                         />
                         <InputField
-                            name="Nomor Orang Tua"
+                            name="No. HP"
                             type="number"
-                            placeholder="Masukkan nomor orang tua"
+                            placeholder="Masukkan nomor hp"
                             customClassname="w-full"
                             required={true}
                         />
@@ -131,13 +131,6 @@ export const AddDataWeight = () => {
                                 required={true}
                             />
                         </div>
-                        <InputField
-                            name="Nomor HP"
-                            type="number"
-                            placeholder="Masukkan nomor hp"
-                            customClassname="w-full"
-                            required={true}
-                        />
                     </div>
                     <div className="flex flex-col md:flex-row items-start gap-5 md:gap-10">
                         <InputField
