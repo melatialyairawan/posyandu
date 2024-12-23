@@ -154,7 +154,7 @@ export const AddDataInspection = () => {
                     </div>
 
                     <Button type="submit" className="w-fit mb-1 bg-primary text-white" isLoading={isSubmitting}>
-                        Tambah
+                        Simpan
                     </Button>
                 </Form>
             )}
