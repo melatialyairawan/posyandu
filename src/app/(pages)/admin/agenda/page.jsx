@@ -1,11 +1,10 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { Button, Divider } from '@nextui-org/react';
 import { FaPlus } from 'react-icons/fa';
+import { FaCog } from 'react-icons/fa'; // Import settings icon
 import { toast } from 'react-hot-toast';
 import Calendar from '@/components/Agenda/AgendaComponent';
 
@@ -26,34 +25,20 @@ const AgendaPage = () => {
 
     return (
         <div>
-            <Button
-                startContent={<FaPlus />}
-                className='bg-primary text-white'
-                onPress={handleNavigation}
-            >
-                Tambah Kegiatan
-            </Button>
-            <Divider className='my-5 border-black' />
-            {/* <div className='flex justify-between items-center'>
-                <div className='flex gap-5 items-center'>
-                    <div className='flex gap-2'>
-                        <Button isIconOnly className='bg-primary text-white'>
-                            <IoIosArrowBack size={20} />
-                        </Button>
-                        <Button isIconOnly className='bg-primary text-white'>
-                            <IoIosArrowForward size={20} />
-                        </Button>
-                    </div>
-                    <h1 className='text-xl'>Desember 2024</h1>
-                </div>
-                <div className='flex gap-2'>
-                    <Button className='bg-primary text-white'>Pekan</Button>
-                    <Button className='bg-primary text-white'>Bulan</Button>
-                </div>
-            </div> */}
+            <div className="flex items-center justify-between mb-5">
+                <Button
+                    startContent={<FaPlus />}
+                    className='bg-primary text-white'
+                    onPress={handleNavigation}
+                >
+                    Tambah Kegiatan
+                </Button>
+                <FaCog className="text-xl text-gray-400 cursor-pointer" />
+            </div>
+            <Divider className='my-5' />
             <Calendar />
         </div>
     )
 }
 
-export default AgendaPage
+export default AgendaPage;

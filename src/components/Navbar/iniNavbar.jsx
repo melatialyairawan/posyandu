@@ -13,6 +13,19 @@ const navItems = [
   { label: 'Daftar Posyandu', path: '/user/posyandulist' },
 ];
 
+const handleNavigation = async (path) => {
+  if (pathname === path) return;
+  const loadingToast = toast.loading('Navigating...');
+  try {
+      await router.push(path);
+      toast.success('Redirecting...');
+  } catch (error) {
+      toast.error('Navigation failed.');
+  } finally {
+      toast.dismiss(loadingToast);
+  }
+};
+
 const Navbar = () => {
   const pathname = usePathname();
   return (
@@ -67,4 +80,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Navbar;

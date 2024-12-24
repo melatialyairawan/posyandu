@@ -1,6 +1,6 @@
 
 import React from 'react';
-import TimbanganTable from '@/components/TableComponent/TimbanganTable';
+import TimbanganTable from '@/components/TableComponent/timbanganTable';
 
 const Timbangan = () => { 
   return ( 
