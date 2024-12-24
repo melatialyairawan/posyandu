@@ -5,8 +5,8 @@ import * as Yup from 'yup';
 import { useRouter } from 'next/navigation';
 import { Formik, Field, Form } from 'formik';
 import { Button } from "@nextui-org/button";
-
 import InputField from '@/components/InputFIeld/InputField';
+import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@nextui-org/dropdown";
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -16,32 +16,6 @@ const validationSchema = Yup.object({
     Posyandu: Yup.string().required('Posyandu is required'),
     Layanan: Yup.string().required('Layanan is required'),
 });
-
-const CustomSelectField = ({ name, placeholder, customClassname, required, options }) => (
-    <Field name={name}>
-        {({ field, meta }) => (
-            <div className={`relative ${customClassname}`}>
-                <label htmlFor={name} className='capitalize'>{name}</label>
-                <select
-                    id={name}
-                    {...field}
-                    className="form-select w-full mt-2 text-gray-500 rounded-md shadow-sm"
-                    required={required}
-                >
-                    <option value="" disabled>{placeholder}</option>
-                    {options.map((option, index) => (
-                        <option key={index} value={option.value}>
-                            {option.label}
-                        </option>
-                    ))}
-                </select>
-                {meta.touched && meta.error && (
-                    <p className="mt-1 text-sm text-red-600">{meta.error}</p>
-                )}
-            </div>
-        )}
-    </Field>
-);
 
 export const PendaftaranAntrean = () => {
     const initialValues = {
@@ -71,7 +45,7 @@ export const PendaftaranAntrean = () => {
             validationSchema={validationSchema}
             onSubmit={handleSubmit}
         >
-            {({ isSubmitting, setFieldValue }) => (
+            {({ isSubmitting, setFieldValue, values }) => (
                 <Form className="space-y-4 shadow p-5">
                     <h2 className="text-2xl text-center font-semibold mb-4">Pendaftaran Antrean Posyandu</h2>
                     <div className="flex flex-col md:flex-row items-start gap-5 md:gap-10 mt-2">
@@ -99,18 +73,24 @@ export const PendaftaranAntrean = () => {
                             customClassname="w-full"
                             required={true}
                         />
-                        <CustomSelectField
-                            name="Layanan"
-                            placeholder="Pilih Layanan"
-                            customClassname="w-full mt-2"
-                            required={true}
-                            options={[
-                                { value: '', label: 'Pilih Layanan' },
-                                { value: 'Imunisasi', label: 'Imunisasi' },
-                                { value: 'Vaksin', label: 'Vaksin' },
-                                { value: 'Vitamin', label: 'Vitamin' },
-                            ]}
-                        />
+                        <div className="relative w-full">
+                            <label htmlFor="Layanan" className='capitalize'>Layanan</label>
+                            <Dropdown>
+                                <DropdownTrigger>
+                                    <button className="form-input w-full mt-2 text-gray-500 rounded-md shadow-sm">
+                                        {values.Layanan || 'Pilih Layanan'}
+                                    </button>
+                                </DropdownTrigger>
+                                <DropdownMenu aria-label="Layanan" selectionMode="single" onAction={key => setFieldValue('Layanan', key)}>
+                                    <DropdownItem key="Imunisasi">Imunisasi</DropdownItem>
+                                    <DropdownItem key="Vaksin">Vaksin</DropdownItem>
+                                    <DropdownItem key="Vitamin">Vitamin</DropdownItem>
+                                </DropdownMenu>
+                            </Dropdown>
+                            {values.Layanan && (
+                                <p className="mt-1 text-sm text-red-600">{values.Layanan}</p>
+                            )}
+                        </div>
                     </div>
 
                     <Button type="submit" className="w-fit mb-1 bg-primary text-white" isLoading={isSubmitting}>

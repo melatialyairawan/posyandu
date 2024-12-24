@@ -105,9 +105,9 @@ export const AddDataInspection = () => {
                             required={true}
                         />
                         <InputField
-                            name="Nomor Orang Tua"
+                            name="No. HP Orang Tua"
                             type="number"
-                            placeholder="Masukkan nomor orang tua"
+                            placeholder="Masukkan nomor hp orang tua"
                             customClassname="w-full"
                             required={true}
                         />
@@ -154,7 +154,7 @@ export const AddDataInspection = () => {
                     </div>
 
                     <Button type="submit" className="w-fit mb-1 bg-primary text-white" isLoading={isSubmitting}>
-                        Tambah
+                        Simpan
                     </Button>
                 </Form>
             )}

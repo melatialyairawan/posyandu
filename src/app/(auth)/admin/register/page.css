@@ -1,0 +1,13 @@
+.background-image{
+    background-image: url('src/assets/background1.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.text-max-xl {
+    font-size: 3rem;
+}
+
+.input-custom {
+    font-size: 1.25rem;
+}

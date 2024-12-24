@@ -8,7 +8,7 @@ import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@nextui-o
 
 const navItems = [
   { label: 'Beranda', path: '/user/beranda' },
-  { label: 'Agenda', path: '/agenda' },
+  { label: 'Agenda', path: '/user/kalender' },
   { label: 'Timbangan', path: '/user/timbangan' },
   { label: 'Daftar Posyandu', path: '/user/posyandulist' },
 ];
