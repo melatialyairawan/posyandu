@@ -61,7 +61,7 @@ export const EditUserForm = () => {
                             required={true}
                         />
                         <InputField
-                            name="Nomor HP"
+                            name="No. HP"
                             type="text"
                             placeholder="Masukkan nomor hp"
                             customClassname="w-full"
@@ -78,7 +78,7 @@ export const EditUserForm = () => {
                     </div>
 
                     <Button type="submit" className="w-fit mb-1 bg-primary text-white" isLoading={isSubmitting}>
-                        Tambah
+                        Simpan
                     </Button>
                 </Form>
             )}

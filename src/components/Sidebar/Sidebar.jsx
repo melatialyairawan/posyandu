@@ -1,17 +1,18 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { Button } from '@nextui-org/button';
-import { IoChatboxOutline, IoChatbubbleOutline, IoHomeOutline, IoPersonOutline, IoSettingsOutline } from 'react-icons/io5';
+import { IoArrowBackOutline, IoArrowForwardOutline, IoChatboxOutline, IoChatbubbleOutline, IoHomeOutline, IoPersonOutline, IoSettingsOutline } from 'react-icons/io5';
 import { RiScales2Line } from 'react-icons/ri';
 import { TbClockEdit } from "react-icons/tb";
 import { MdEditCalendar } from "react-icons/md";
 import { FaRegChartBar } from "react-icons/fa";
 import { LiaUserEditSolid } from "react-icons/lia";
+import { motion } from 'framer-motion';
 import toast from 'react-hot-toast';
 
-export default function Sidebar() {
+export default function Sidebar({ isOpen, setIsOpen }) {
     const pathname = usePathname();
     const router = useRouter();
 
@@ -42,37 +43,78 @@ export default function Sidebar() {
         }
     };
 
+    const handleOpen = () => {
+        setIsOpen((prev) => !prev);
+    }
+
     return (
-        <aside className='w-fit p-5 bg-[#F5F6FA] fixed inset-0'>
+        <motion.aside
+            initial={{ width: isOpen ? 325 : 120 }}
+            animate={{ width: isOpen ? 325 : 120 }}
+            transition={{ duration: 0.5, ease: 'easeInOut' }}
+            className='p-5 bg-[#F5F6FA] fixed inset-0'
+        >
             <div className='flex flex-col gap-2 mt-20 justify-start items-start'>
                 {buttons.map((button, index) => (
                     <Button
                         key={index}
                         onPress={() => handleNavigation(button.path)}
-                        className={`w-full font-poppins justify-start text-base ${pathname === button.path
+                        className={`w-full font-poppins justify-start text-base ${!isOpen ? 'justify-center text-center' : ''} ${pathname === button.path
                             ? 'bg-primary text-white'
                             : 'bg-transparent text-[#5A607F]'
                             }`}
                         startContent={button.icon}
                     >
-                        {button.label}
+                        {isOpen ?
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ delay: 0.5 }}
+                            >
+                                {button.label}
+                            </motion.div>
+                            : ''
+                        }
                     </Button>
                 ))}
-                <p className='text-[#A1A7C4] font-poppins my-3'>Settings</p>
+                {isOpen ?
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.5 }}
+                    >
+                        <p className='text-[#A1A7C4] font-poppins my-3'>Settings</p>
+                    </motion.div>
+                    : <div className='mb-12'></div>
+                }
                 {buttons2.map((button, index) => (
                     <Button
                         key={index}
                         onPress={() => handleNavigation(button.path)}
-                        className={`w-full font-poppins justify-start text-base ${pathname === button.path
+                        className={`w-full font-poppins justify-start text-base ${!isOpen ? 'justify-center text-center' : ''} ${pathname === button.path
                             ? 'bg-primary text-white'
                             : 'bg-transparent text-[#5A607F]'
                             }`}
                         startContent={button.icon}
                     >
-                        {button.label}
+                        {isOpen ?
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ delay: 0.5 }}
+                            >
+                                {button.label}
+                            </motion.div>
+                            : ''
+                        }
                     </Button>
                 ))}
+                <motion.div className='absolute right-0 bottom-3 mr-2'>
+                    <Button isIconOnly={true} className='bg-primary' onClick={handleOpen}>
+                        {isOpen ? <IoArrowBackOutline color='white' size={18} /> : <IoArrowForwardOutline color='white' size={18} />}
+                    </Button>
+                </motion.div>
             </div>
-        </aside>
+        </motion.aside>
     );
 }
