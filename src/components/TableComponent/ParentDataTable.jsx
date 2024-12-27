@@ -24,10 +24,10 @@ import {
     ModalFooter,
     useDisclosure,
 } from '@nextui-org/react';
-import { LuPencilLine, LuPlus, LuTrash } from "react-icons/lu";
+import { LuPencilLine, LuTrash } from "react-icons/lu";
 import toast from 'react-hot-toast';
 
-export default function InspectionHistoryTable() {
+export default function ParentDataTable() {
     const [isLoaded, setIsLoaded] = useState(false);
     const router = useRouter();
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -43,7 +43,7 @@ export default function InspectionHistoryTable() {
     const handleToAdd = async () => {
         const loadingToast = toast.loading('Loading...');
         try {
-            router.push('/admin/settings/global/posyanduData/addData');
+            await router.push('/admin/settings/global/parentData/addData');
             toast.success('Redirecting...');
         } catch (error) {
             toast.error('Navigation failed');
@@ -51,11 +51,10 @@ export default function InspectionHistoryTable() {
             toast.dismiss(loadingToast);
         }
     }
-
     const handleToEdit = () => {
         const loadingToast = toast.loading('Loading...');
         try {
-            router.push('/admin/settings/global/posyanduData/editData');
+            router.push('/admin/settings/global/parentData/editData');
             toast.success('Redirecting...');
         } catch (error) {
             toast.error('Navigation failed');
@@ -65,14 +64,14 @@ export default function InspectionHistoryTable() {
     }
 
     const data = [
-        { namaposyandu: 'Posyandu Seroja', tanggal: '09-10-2024', jumlahpengunjung: '24', alamat: 'Getas Pejaten RT 00/RW 00, Jati, Kudus', },
-        { namaposyandu: 'Posyandu Melati 5', tanggal: '19-11-2024', jumlahpengunjung: '27', alamat: 'Jati Wetan RT 01/RW 02, Jati, Kudus', },
+        { id: '#12218A', parentName: 'anita.h', parentNumber: '08xxxxxxxxx', kecamatan: 'Kudus', desa: '-', alamatLengkap: '-' },
+        { id: '#12512B', parentName: 'tom.a', parentNumber: '08xxxxxxxxx', kecamatan: 'Besito', desa: '-', alamatLengkap: '-' },
     ];
 
     return (
         <div className="">
             <div className="flex justify-between items-center mb-5">
-                <h3 className="text-xl font-semibold">Kelola Data Posyandu</h3>
+                <h3 className="text-xl font-semibold">Kelola Data Orang Tua</h3>
                 <Button color="success" auto className="bg-primary text-white" onPress={handleToAdd}>+ Tambahkan</Button>
             </div>
 
@@ -91,43 +90,49 @@ export default function InspectionHistoryTable() {
             </div>
 
             <Table
-                aria-label="Example table with dynamic content"
+                aria-label="Riwayat Pemeriksaan"
                 className="w-full border border-gray-200 rounded-2xl shadow-md"
             >
                 <TableHeader>
-                    {/* <TableColumn> </TableColumn> */}
-                    <TableColumn>Nama Posyandu</TableColumn>
-                    <TableColumn>Tanggal</TableColumn>
-                    <TableColumn>Jumlah Pengunjung</TableColumn>
-                    <TableColumn>Alamat</TableColumn>
+                    <TableColumn>ID Orang Tua</TableColumn>
+                    <TableColumn>Nama Orang Tua</TableColumn>
+                    <TableColumn>Desa</TableColumn>
+                    <TableColumn>Tanggal Lahir</TableColumn>
+                    <TableColumn>Kecamatan</TableColumn>
+                    <TableColumn>Alamat Lengkap</TableColumn>
                     <TableColumn>Aksi</TableColumn>
                 </TableHeader>
                 <TableBody>
                     {data.map((item, index) => (
                         <TableRow key={index} className="hover:bg-gray-100">
-                            {/* <TableCell>
-                                <Skeleton isLoaded={isLoaded}>
-                                    <Checkbox />
-                                </Skeleton>
-                            </TableCell> */}
                             <TableCell>
                                 <Skeleton isLoaded={isLoaded}>
-                                    {item.namaposyandu}
+                                    {item.id}
                                 </Skeleton>
                             </TableCell>
                             <TableCell>
                                 <Skeleton isLoaded={isLoaded}>
-                                    {item.tanggal}
+                                    {item.parentName}
                                 </Skeleton>
                             </TableCell>
                             <TableCell>
                                 <Skeleton isLoaded={isLoaded}>
-                                    {item.jumlahpengunjung}
+                                    {item.desa}
                                 </Skeleton>
                             </TableCell>
                             <TableCell>
                                 <Skeleton isLoaded={isLoaded}>
-                                    {item.alamat}
+                                    {item.parentNumber}
+                                </Skeleton>
+                            </TableCell>
+                            <TableCell>
+                                <Skeleton isLoaded={isLoaded}>
+                                    {item.kecamatan}
+                                </Skeleton>
+                            </TableCell>
+                            <TableCell>
+                                <Skeleton isLoaded={isLoaded}>
+                                    {item.alamatLengkap}
                                 </Skeleton>
                             </TableCell>
                             <TableCell>
@@ -135,43 +140,6 @@ export default function InspectionHistoryTable() {
                                     <Button isIconOnly onPress={handleToEdit} className="text-primary bg-white border-primary border mr-2">
                                         <LuPencilLine size={15} />
                                     </Button>
-
-                                    {/* <Button
-                                        isIconOnly
-                                        onPress={() => {
-                                            onOpen();
-                                        }}
-                                        className="text-red-500 bg-white border-red-500 border"
-                                    >
-                                        <LuTrash size={15} />
-                                    </Button>
-                                    <Modal
-                                        backdrop="blur"
-                                        isOpen={isOpen}
-                                        onOpenChange={onOpenChange}
-                                    >
-                                        <ModalContent>
-                                            {(onClose) => (
-                                                <>
-                                                    <ModalHeader className="flex flex-col gap-1">Confirm</ModalHeader>
-                                                    <ModalBody>
-                                                        <p>Are you sure you want to delete this task?</p>
-                                                    </ModalBody>
-                                                    <ModalFooter>
-                                                        <Button color="primary" variant="light" onPress={onClose}>
-                                                            Cancel
-                                                        </Button>
-                                                        <Button color="danger" onPress={() => {
-                                                            handleDelete();
-                                                            onClose();
-                                                        }}>
-                                                            Delete
-                                                        </Button>
-                                                    </ModalFooter>
-                                                </>
-                                            )}
-                                        </ModalContent>
-                                    </Modal> */}
                                 </Skeleton>
                             </TableCell>
                         </TableRow>

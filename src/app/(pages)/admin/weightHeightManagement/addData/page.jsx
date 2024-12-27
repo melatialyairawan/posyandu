@@ -10,7 +10,7 @@ const AddWeightData = () => {
                 <IoIosArrowDropleft size={18} />
                 <h3 className='text-base font-semibold'>Kembali</h3>
             </Link>
-            <h2 className='font-semibold text-xl mb-5'>Tambah Data</h2>
+            <h2 className='font-semibold text-xl mb-5'>Tambah Data Berat & Tinggi Badan</h2>
             <AddDataWeight />
         </div>
     )

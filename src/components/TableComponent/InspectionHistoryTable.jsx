@@ -64,8 +64,8 @@ export default function InspectionHistoryTable() {
     }
 
     const data = [
-        { id: '#12218A', childName: 'anita.h', tanggalLahir: '04-01-2000', desa: '-', kecamatan: '-', inspectionDate: '-', inspection: 'Imunisasi' },
-        { id: '#12512B', childName: 'tom.a', tanggalLahir: '01-01-2000', desa: '-', kecamatan: '-', inspectionDate: '-', inspection: 'Vitamin' },
+        { id: '#12218A', childName: 'anita.h', parentName: 'john', inspectionDate: '04-01-2000', inspection: 'Imunisasi', keterangan: '-' },
+        { id: '#12512B', childName: 'tom.a', parentName: 'doe', inspectionDate: '01-01-2000', inspection: 'Vitamin', keterangan: '-' },
     ];
 
     return (
@@ -94,24 +94,23 @@ export default function InspectionHistoryTable() {
                 className="w-full border border-gray-200 rounded-2xl shadow-md"
             >
                 <TableHeader>
-                    <TableColumn> </TableColumn>
+                    {/* <TableColumn> </TableColumn> */}
                     <TableColumn>ID Anak</TableColumn>
                     <TableColumn>Nama Anak</TableColumn>
-                    <TableColumn>Tanggal Lahir</TableColumn>
-                    <TableColumn>Desa</TableColumn>
-                    <TableColumn>Kecamatan</TableColumn>
+                    <TableColumn>Nama Orang tua</TableColumn>
                     <TableColumn>Tanggal Periksa</TableColumn>
                     <TableColumn>Pemeriksaan</TableColumn>
+                    <TableColumn>Keterangan</TableColumn>
                     <TableColumn>Aksi</TableColumn>
                 </TableHeader>
                 <TableBody>
                     {data.map((item, index) => (
                         <TableRow key={index} className="hover:bg-gray-100">
-                            <TableCell>
+                            {/* <TableCell>
                                 <Skeleton isLoaded={isLoaded}>
                                     <Checkbox />
                                 </Skeleton>
-                            </TableCell>
+                            </TableCell> */}
                             <TableCell>
                                 <Skeleton isLoaded={isLoaded}>
                                     {item.id}
@@ -124,17 +123,7 @@ export default function InspectionHistoryTable() {
                             </TableCell>
                             <TableCell>
                                 <Skeleton isLoaded={isLoaded}>
-                                    {item.tanggalLahir}
-                                </Skeleton>
-                            </TableCell>
-                            <TableCell>
-                                <Skeleton isLoaded={isLoaded}>
-                                    {item.desa}
-                                </Skeleton>
-                            </TableCell>
-                            <TableCell>
-                                <Skeleton isLoaded={isLoaded}>
-                                    {item.kecamatan}
+                                    {item.parentName}
                                 </Skeleton>
                             </TableCell>
                             <TableCell>
@@ -145,6 +134,11 @@ export default function InspectionHistoryTable() {
                             <TableCell>
                                 <Skeleton isLoaded={isLoaded}>
                                     {item.inspection}
+                                </Skeleton>
+                            </TableCell>
+                            <TableCell>
+                                <Skeleton isLoaded={isLoaded}>
+                                    {item.keterangan}
                                 </Skeleton>
                             </TableCell>
                             <TableCell>

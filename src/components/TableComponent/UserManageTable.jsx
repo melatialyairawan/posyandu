@@ -75,7 +75,7 @@ export default function UserManageTable() {
                 className="w-full border border-gray-200 rounded-2xl shadow-md"
             >
                 <TableHeader>
-                    <TableColumn> </TableColumn>
+                    {/* <TableColumn> </TableColumn> */}
                     <TableColumn>ID Anak</TableColumn>
                     <TableColumn>Nama Akun</TableColumn>
                     <TableColumn>Nomor HP</TableColumn>
@@ -85,11 +85,11 @@ export default function UserManageTable() {
                 <TableBody>
                     {data.map((item, index) => (
                         <TableRow key={index} className="hover:bg-gray-100">
-                            <TableCell>
+                            {/* <TableCell>
                                 <Skeleton isLoaded={isLoaded}>
                                     <Checkbox />
                                 </Skeleton>
-                            </TableCell>
+                            </TableCell> */}
                             <TableCell>
                                 <Skeleton isLoaded={isLoaded}>
                                     {item.id}

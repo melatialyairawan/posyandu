@@ -15,7 +15,7 @@ const validationSchema = Yup.object({
 
 export const Personal = () => {
     const initialValues = {
-       
+
     };
 
     const router = useRouter();
@@ -49,14 +49,14 @@ export const Personal = () => {
                             required={true}
                         />
                         <InputField
-                           name="Jenis kelamin"
-                           type="text"
-                           placeholder="Perempuan"
-                           customClassname="w-full"
-                           required={true}
+                            name="Jenis kelamin"
+                            type="text"
+                            placeholder="Perempuan"
+                            customClassname="w-full"
+                            required={true}
                         />
                     </div>
-                    
+
                     <div className="flex flex-col md:flex-row items-start gap-5 md:gap-10">
                         <InputField
                             name="Alamat"
@@ -73,9 +73,6 @@ export const Personal = () => {
                             required={true}
                         />
                     </div>
-                    <Button className="w-fit mb-1 bg-red-500 text-white">
-                        Keluar
-                    </Button>
                 </Form>
             )}
         </Formik>

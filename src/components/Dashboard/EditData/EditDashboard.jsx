@@ -82,7 +82,7 @@ export const EditDataDashboard = () => {
                     
 
                     <Button type="submit" className="w-fit mb-1 bg-primary text-white" isLoading={isSubmitting}>
-                        Edit
+                        Simpan
                     </Button>
                 </Form>
             )}
