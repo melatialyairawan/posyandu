@@ -6,13 +6,14 @@ import { useRouter } from 'next/navigation';
 import { Formik, Field, Form } from 'formik';
 import { Button } from "@nextui-org/button";
 import InputField from '@/components/InputFIeld/InputField';
+import SearchableSelect from '@/components/SeachSelect/SearchSelect';
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const validationSchema = Yup.object({
-    Kegiatan: Yup.string().required('Kegiatan is required').min(3, 'Kegiatan must be at least 3 characters'),
-    Tanggal: Yup.date().required('Tanggal is required'),
-    Kecamatan: Yup.string().required('Kecamatan is required').min(3, 'Kecamatan must be at least 3 characters'),
+    // Kegiatan: Yup.string().required('Kegiatan is required').min(3, 'Kegiatan must be at least 3 characters'),
+    // Tanggal: Yup.date().required('Tanggal is required'),
+    // Kecamatan: Yup.string().required('Kecamatan is required').min(3, 'Kecamatan must be at least 3 characters'),
 });
 
 export const AddDataAgency = () => {
@@ -23,6 +24,16 @@ export const AddDataAgency = () => {
         selesai_pukul: '',
         Kecamatan: '',
     };
+
+    const posyandu = [
+        { key: 'posyandu1', label: 'Posyandu 1' },
+        { key: 'posyandu2', label: 'Posyandu 2' },
+        { key: 'posyandu3', label: 'Posyandu 3' },
+    ];
+
+    const handleSelect = (value) => {
+        console.log(value);
+    }
 
     const router = useRouter();
 
@@ -52,13 +63,13 @@ export const AddDataAgency = () => {
                             type="text"
                             placeholder="Masukkan Kegiatan"
                             customClassname="w-full"
-                            required={false}
+                            required={true}
                         />
                         <InputField
                             name="Tanggal"
                             type="date"
                             customClassname="w-full"
-                            required={false}
+                            required={true}
                         />
                     </div>
                     <div>
@@ -79,19 +90,11 @@ export const AddDataAgency = () => {
                         </div>
                     </div>
                     <div className="flex flex-col md:flex-row items-start gap-5 md:gap-10">
-                        <InputField
-                            name="Kecamatan"
-                            type="text"
-                            placeholder="Masukkan Kecamatan"
-                            customClassname="w-full"
-                            required={false}
-                        />
-                        <InputField
-                            name="Lokasi Posyandu"
-                            type="text"
-                            placeholder="Masukkan Lokasi Posyandu"
-                            customClassname="w-full"
-                            required={true}
+                        <SearchableSelect
+                            label="Nama Posyandu"
+                            placeholder="Pilih Posyandu"
+                            options={posyandu}
+                            onSelect={handleSelect}
                         />
                     </div>
 

@@ -64,8 +64,8 @@ export default function WeightHeightTable() {
     }
 
     const data = [
-        { id: '#12218A', childName: 'anita.h', tanggalLahir: '04-01-2000', desa: '-', kecamatan: '-', beratBadan: '-', tinggiBadan: '-' },
-        { id: '#12512B', childName: 'tom.a', tanggalLahir: '01-01-2000', desa: '-', kecamatan: '-', beratBadan: '-', tinggiBadan: '-' },
+        { id: '#12218A', childName: 'anita.h', parentName: 'john', inspectionDate: '01-01-2000', beratBadan: '-', tinggiBadan: '-', keterangan: 'Anak ini memiliki berat badan yang ideal', },
+        { id: '#12512B', childName: 'tom.a', parentName: 'doe', inspectionDate: '01-01-2000', beratBadan: '-', tinggiBadan: '-', keterangan: 'Anak ini memiliki berat badan yang ideal', },
     ];
 
     return (
@@ -96,11 +96,11 @@ export default function WeightHeightTable() {
                     <TableColumn> </TableColumn>
                     <TableColumn>ID Anak</TableColumn>
                     <TableColumn>Nama Anak</TableColumn>
-                    <TableColumn>Tanggal Lahir</TableColumn>
-                    <TableColumn>Desa</TableColumn>
-                    <TableColumn>Kecamatan</TableColumn>
+                    <TableColumn>Nama Orang Tua</TableColumn>
+                    <TableColumn>Tanggal Periksa</TableColumn>
                     <TableColumn>Berat Badan</TableColumn>
                     <TableColumn>Tinggi Badan</TableColumn>
+                    <TableColumn>Keterangan</TableColumn>
                     <TableColumn>Aksi</TableColumn>
                 </TableHeader>
                 <TableBody>
@@ -123,17 +123,12 @@ export default function WeightHeightTable() {
                             </TableCell>
                             <TableCell>
                                 <Skeleton isLoaded={isLoaded}>
-                                    {item.tanggalLahir}
+                                    {item.parentName}
                                 </Skeleton>
                             </TableCell>
                             <TableCell>
                                 <Skeleton isLoaded={isLoaded}>
-                                    {item.desa}
-                                </Skeleton>
-                            </TableCell>
-                            <TableCell>
-                                <Skeleton isLoaded={isLoaded}>
-                                    {item.kecamatan}
+                                    {item.inspectionDate}
                                 </Skeleton>
                             </TableCell>
                             <TableCell>
@@ -144,6 +139,11 @@ export default function WeightHeightTable() {
                             <TableCell>
                                 <Skeleton isLoaded={isLoaded}>
                                     {item.tinggiBadan}
+                                </Skeleton>
+                            </TableCell>
+                            <TableCell>
+                                <Skeleton isLoaded={isLoaded}>
+                                    {item.keterangan}
                                 </Skeleton>
                             </TableCell>
                             <TableCell>
