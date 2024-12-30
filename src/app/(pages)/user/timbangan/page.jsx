@@ -1,10 +1,10 @@
 
 import React from 'react';
-import TimbanganTable from '@/components/TableComponent/timbanganTable';
+import TimbanganCard from '@/components/TimbanganCards/TimbanganCard';
 
 const Timbangan = () => { 
   return ( 
-    <TimbanganTable /> 
+    <TimbanganCard /> 
   );
 };
 
