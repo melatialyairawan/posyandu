@@ -4,7 +4,7 @@ const SearchableSelect = ({ options, label, placeholder, onSelect }) => {
     const [searchValue, setSearchValue] = useState('');
     const [filteredOptions, setFilteredOptions] = useState(options);
     const [isOpen, setIsOpen] = useState(false);
-    const [selectedValue, setSelectedValue] = useState(''); // Track selected value
+    const [selectedValue, setSelectedValue] = useState('');
     const dropdownRef = useRef(null);
 
     useEffect(() => {
@@ -26,9 +26,9 @@ const SearchableSelect = ({ options, label, placeholder, onSelect }) => {
     }, []);
 
     const handleSelect = (value, label) => {
-        setSelectedValue(label); // Set selected value to input field
+        setSelectedValue(label);
         onSelect(value);
-        setSearchValue(''); // Clear search input
+        setSearchValue('');
         setIsOpen(false);
     };
 
@@ -40,15 +40,15 @@ const SearchableSelect = ({ options, label, placeholder, onSelect }) => {
                 type="text"
                 className="w-full rounded-xl bg-gray-100 px-3 py-2 text-md focus:border-none"
                 placeholder={placeholder}
-                value={searchValue || selectedValue} // Display selected value or search input
+                value={searchValue || selectedValue}
                 onFocus={() => setIsOpen(true)}
                 onChange={(e) => {
                     setSearchValue(e.target.value);
-                    setSelectedValue(''); // Clear selected value when typing
+                    setSelectedValue('');
                 }}
             />
             {isOpen && (
-                <ul className="absolute z-10 w-full mt-2 bg-white border border-gray-300 rounded-xl shadow-lg max-h-40 overflow-y-auto">
+                <ul className="absolute z-[999] w-full mt-2 bg-white border border-gray-300 rounded-xl shadow-lg max-h-40 overflow-y-auto">
                     {filteredOptions.length > 0 ? (
                         filteredOptions.map((option) => (
                             <li
