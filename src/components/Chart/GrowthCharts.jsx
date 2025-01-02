@@ -150,7 +150,7 @@ export default function GrowthCharts() {
             <h2 className="text-gray-800 text-xl font-semibold">
               Detail Anak Statistik
             </h2>
-            <p className="text-gray-600 text-sm">Lihat perkembangan tinggi dan berat badan anak anda</p>
+            <p className="text-gray-600 text-sm mt-2">Lihat perkembangan tinggi dan berat badan anak anda</p>
           </div>
         </div>
       </div>

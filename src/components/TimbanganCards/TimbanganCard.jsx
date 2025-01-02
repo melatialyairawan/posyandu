@@ -33,7 +33,7 @@ export default function TimbanganCards() {
                     <CardHeader className="font-semibold">
                         <Skeleton isLoaded={isLoaded}>
                             <p className="text-sm text-gray-500">Terakhir Periksa: {item.tanggalPeriksa}</p>
-                            <h3 className="text-lg mt-2" style={{ fontFamily: 'serif' }}>{item.childName}</h3>
+                            <h3 className="text-lg mt-2" style={{ fontFamily: 'Source Code Pro' }}>{item.childName}</h3>
                         </Skeleton>
                     </CardHeader>
                     <CardBody style={{ fontFamily: 'Source Code Pro' }}>
