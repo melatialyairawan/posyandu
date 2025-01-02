@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     Switch,
     Card,
@@ -22,7 +22,7 @@ import { FaListUl } from "react-icons/fa";
 import InputField from '../InputFIeld/InputField';
 import SearchableSelect from '../SeachSelect/SearchSelect';
 import { ScheduleCreateComponent } from './ScheduleCreate/ScheduleCreateComponent';
-import { ScheduleCreateSecond } from './ScheduleCreate/ScheduleCreateSecond';
+import { ScheduleCreateSecond } from './ScheduleCreate/new';
 import ScheduleCard from './ScheduleCard';
 import { StepIndicator } from './ScheduleHelper';
 import { Verification } from './ScheduleHelper';
@@ -39,6 +39,7 @@ const ScheduleListComponent = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const { isOpen: isCreateModalOpen, onOpen: openCreateModal, onClose: closeCreateModal } = useDisclosure();
     const [currentStep, setCurrentStep] = useState(1);
+    const [isNextDisabled, setIsNextDisabled] = useState(true);
     const { isFilled } = useStore((state) => state);
 
     const [formData, setFormData] = useState({
@@ -49,8 +50,26 @@ const ScheduleListComponent = () => {
         service: '',
     });
 
-    const handleNext = () => setCurrentStep((prev) => prev + 1);
+    const validateCurrentStep = () => {
+        switch (currentStep) {
+            case 1:
+                return formData.Kegiatan && formData.Tanggal && formData.Kecamatan;
+            case 2:
+                return formData.childName && formData.service;
+            default:
+                return true;
+        }
+    };
+
+    const handleNext = () => {
+        if (validateCurrentStep()) {
+            setCurrentStep((prev) => prev + 1);
+            setIsNextDisabled(true);
+        }
+    };
+
     const handleBack = () => setCurrentStep((prev) => Math.max(prev - 1, 1));
+
     const handleReset = () => {
         setCurrentStep(1);
         setFormData({
@@ -60,12 +79,14 @@ const ScheduleListComponent = () => {
             childName: '',
             service: '',
         });
+        setIsNextDisabled(true);
         closeCreateModal();
     };
 
-    const handleConfirm = () => {
-        console.log('Data confirmed:', formData);
-        handleReset();
+    const handleInputChange = (field, value) => {
+        setFormData((prev) => ({ ...prev, [field]: value }));
+        const isFilled = Object.values(formData).some((val) => val !== null && val !== '');
+        setIsNextDisabled(!isFilled);
     };
 
     return (
@@ -106,6 +127,8 @@ const ScheduleListComponent = () => {
                                 </div>
                                 {currentStep === 1 && (
                                     <ScheduleCreateComponent
+                                        data={formData}
+                                        onInputChange={handleInputChange}
                                         onNext={(data) => {
                                             setFormData((prev) => ({ ...prev, ...data }));
                                             handleNext();
@@ -114,15 +137,15 @@ const ScheduleListComponent = () => {
                                 )}
                                 {currentStep === 2 && (
                                     <ScheduleCreateSecond
+                                        data={formData}
+                                        onInputChange={handleInputChange}
                                         onNext={(data) => {
                                             setFormData((prev) => ({ ...prev, ...data }));
                                             handleNext();
                                         }}
                                     />
                                 )}
-                                {currentStep === 3 && (
-                                    <Verification />
-                                )}
+                                {currentStep === 3 && <Verification />}
                             </ModalBody>
                             <ModalFooter>
                                 {currentStep > 1 && (
@@ -135,11 +158,16 @@ const ScheduleListComponent = () => {
                                     </Button>
                                 )}
                                 {currentStep < 3 ? (
-                                    <Button isDisabled={!isFilled} color="primary" className='rounded-full' onPress={handleNext}>
+                                    <Button
+                                        color="primary"
+                                        className="rounded-full"
+                                        onPress={handleNext}
+                                        isDisabled={!isFilled}
+                                    >
                                         Lanjut
                                     </Button>
                                 ) : (
-                                    <Button color="primary" className='rounded-full' onPress={handleReset}>
+                                    <Button color="primary" className="rounded-full" onPress={handleReset}>
                                         Buat
                                     </Button>
                                 )}

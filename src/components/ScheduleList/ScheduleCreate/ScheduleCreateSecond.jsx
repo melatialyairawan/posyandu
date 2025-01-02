@@ -1,7 +1,6 @@
 'use client';
 
 import * as React from 'react';
-import { useState, useEffect } from 'react';
 import * as Yup from 'yup';
 import { useRouter } from 'next/navigation';
 import { Formik, Form } from 'formik';
@@ -9,7 +8,6 @@ import { Button } from "@nextui-org/button";
 import { Textarea } from "@nextui-org/react";
 import InputField from '@/components/InputFIeld/InputField';
 import SearchableSelect from '@/components/SeachSelect/SearchSelect';
-import useStore from '@/store/useStore';
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -19,10 +17,7 @@ const validationSchema = Yup.object({
     Kecamatan: Yup.string().required('Kecamatan is required').min(3, 'Kecamatan must be at least 3 characters'),
 });
 
-export const ScheduleCreateComponent = () => {
-    const [dateInput, setDateInput] = useState('');
-    const { isFilled, setIsFilled } = useStore((state) => state);
-
+export const ScheduleCreateSecond = () => {
     const initialValues = {
         Kegiatan: '',
         Tanggal: '',
@@ -31,28 +26,24 @@ export const ScheduleCreateComponent = () => {
         Kecamatan: '',
     };
 
-    const posyandu = [
-        { key: 'posyandu1', label: 'Posyandu-1' },
-        { key: 'posyandu2', label: 'Posyandu-2' },
-        { key: 'posyandu3', label: 'Posyandu-3' },
+    const childName = [
+        { key: 'johndoe', label: 'John Doe' },
+        { key: 'janedoe', label: 'Jane Doe' },
+        { key: 'babydoe', label: 'Baby Doe' },
     ];
+
+    const services = [
+        { key: 'service1', label: 'Imunisasi' },
+        { key: 'service2', label: 'Vitamin' },
+        { key: 'service3', label: 'Cek Berat/Tinggi Badan' },
+        { key: 'service4', label: 'Konsultasi' },
+        { key: 'service5', label: 'Pemeriksaan Kesehatan' },
+    ]
 
     const router = useRouter();
 
     const handleSelect = (value) => {
         console.log(value);
-    }
-
-    useEffect(() => {
-        handleDateInput(dateInput);
-    }, [dateInput]);
-
-    const handleDateInput = (value) => {
-        if (value !== '' && value !== null) {
-            setIsFilled(true);
-        } else {
-            setIsFilled(false);
-        }
     }
 
     const handleSubmit = async (values, actions) => {
@@ -77,20 +68,18 @@ export const ScheduleCreateComponent = () => {
                 <Form className="space-y-4 shadow lg:p-7 p-2 rounded-xl mb-20">
                     <div className="flex flex-col md:flex-row items-start gap-5 md:gap-10">
                         <SearchableSelect
-                            label="Posyandu Tujuan"
-                            placeholder="Pilih Posyandu"
-                            options={posyandu}
+                            label="Pilih Nama Anak"
+                            placeholder="Pilih Nama Anak"
+                            options={childName}
                             onSelect={handleSelect}
                         />
                     </div>
                     <div className="flex flex-col md:flex-row items-start gap-5 md:gap-10">
-                        <InputField
-                            name="Pilih Tanggal"
-                            type="date"
-                            customClassname="w-full"
-                            required={true}
-                            value={dateInput}
-                            setOnChange={setDateInput}
+                        <SearchableSelect
+                            label="Pilih Layanan"
+                            placeholder="Pilih Layanan"
+                            options={services}
+                            onSelect={handleSelect}
                         />
                     </div>
                 </Form>
