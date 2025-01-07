@@ -27,7 +27,7 @@ import {
 import { LuPencilLine, LuPlus, LuTrash } from "react-icons/lu";
 import toast from 'react-hot-toast';
 
-export default function InspectionHistoryTable() {
+export default function DashboardTable() {
     const [isLoaded, setIsLoaded] = useState(false);
     const router = useRouter();
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
