@@ -1,10 +1,11 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation'; // useRouter from Next.js
 import { Avatar } from "@nextui-org/react";
 import { IoIosArrowDown } from "react-icons/io";
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@nextui-org/react";
+import { toast } from 'react-toastify';
 
 const navItems = [
   { label: 'Beranda', path: '/user/beranda' },
@@ -13,21 +14,23 @@ const navItems = [
   { label: 'Daftar Posyandu', path: '/user/posyandulist' },
 ];
 
-const handleNavigation = async (path) => {
-  if (pathname === path) return;
-  const loadingToast = toast.loading('Navigating...');
-  try {
-      await router.push(path);
-      toast.success('Redirecting...');
-  } catch (error) {
-      toast.error('Navigation failed.');
-  } finally {
-      toast.dismiss(loadingToast);
-  }
-};
-
 const Navbar = () => {
   const pathname = usePathname();
+  const router = useRouter();
+
+  const handleNavigation = async (path) => {
+    if (pathname === path) return;
+    const loadingToast = toast.loading('Navigating...');
+    try {
+      await router.push(path);  // Correct usage of Next.js routing
+      toast.success('Redirecting...');
+    } catch (error) {
+      toast.error('Navigation failed.');
+    } finally {
+      toast.dismiss(loadingToast);
+    }
+  };
+
   return (
     <header className="flex justify-between items-center p-5 bg-gray-100">
       <div className="flex items-center">
@@ -66,7 +69,9 @@ const Navbar = () => {
                 </div>
               </DropdownTrigger>
               <DropdownMenu aria-label="Profile Actions" variant="flat">
-                <DropdownItem key="settings">Informasi Pengguna</DropdownItem>
+                <DropdownItem key="settings">
+                  <Link href="/user/InformasiPengguna">Informasi Pengguna</Link>
+                </DropdownItem>
                 <DropdownItem key="help_and_feedback">Help & Feedback</DropdownItem>
                 <DropdownItem key="logout" color="danger">
                   Log Out
@@ -80,4 +85,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Navbar;
